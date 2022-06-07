@@ -25,12 +25,6 @@ class Gdorks:
 	
 	# Search In Google
 	def search(self):
-		# Parsing cookies from cookies.txt
-		rcookies = open("cookies.txt", "r").read().split(";")
-		cookies = {}
-		for i in rcookies:
-			k, v = i.strip().split("=")
-			cookies[k.strip()] = v.strip()
 		req = requests.session()
 		target = f"https://www.google.com/search?q={self.query}&source=hp&oq={self.query}&sclient=gws-wiz"
 		req = requests.get(target, allow_redirects=True, cookies=cookies, headers=headers)
@@ -93,12 +87,16 @@ def banner():
 def main():
 	banner()
 	test = input("Input Dork List Filename : ")
-	try:
-		with open(test, "r", encoding="utf-8") as dorklist:
-			dorklists = dorklist.read().split("\n")
-			for i in dorklists:
-				Gdorks(i).search()
-	except:
-		print("Please input valid google dork lists")
+	with open(test, "r", encoding="utf-8") as dorklist:
+		# Parsing cookies from cookies.txt
+		global cookies
+		rcookies = open("cookies.txt", "r").read().split(";")
+		cookies = {}
+		for i in rcookies:
+			k, v = i.strip().split("=")
+			cookies[k.strip()] = v.strip()
+		dorklists = dorklist.read().split("\n")
+		for i in dorklists:
+			Gdorks(i).search()
 if __name__ == '__main__':
 	main()
