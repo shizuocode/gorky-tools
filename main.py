@@ -48,7 +48,7 @@ class Gdorks:
 	def grab(self, content):
 		fi = BeautifulSoup(content, "html.parser")
 		lista = fi.find_all("a", href=True)
-		if len(lista)<3:
+		if "/sorry/index?" in content:
 			print("[Error!] -- Try to rewrite your cookies in cookies.txt!")
 		else:
 			for i in lista:
@@ -93,7 +93,7 @@ def main():
 		rcookies = open("cookies.txt", "r").read().split(";")
 		cookies = {}
 		for i in rcookies:
-			k, v = i.strip().split("=")
+			k, v = i.strip().split("=", 1)
 			cookies[k.strip()] = v.strip()
 		dorklists = dorklist.read().split("\n")
 		for i in dorklists:
