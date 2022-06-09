@@ -23,6 +23,6 @@ Before you start using this tools, make sure to copy cookies from google search.
 After you grab the cookies copy and paste it to the cookies.txt files. Don't forget to save your google dork lists file at the same directory as Gorky Tools.
 Finally you can start this tools by the basic command in python: ```python main.py``` and input your google dork lists filename.
 
-Blank and reCaptcha
+Blank and reCAPTCHA
 ----
 This tools can detect google recaptcha and sometimes you may face blank process. To fix it, redo the copy and past cookies step and save it to cookies.txt file. You can do this step without closing the main.py program.
